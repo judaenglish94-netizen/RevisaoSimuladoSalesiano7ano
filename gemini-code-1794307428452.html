@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>English Quiz - 7th Grade (Simple Past & Medieval Professions)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --space-blue: #0284c7;
+      --space-light: #38bdf8;
+      --text-main: #f8f9fa;
+      --text-secondary: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Nunito', sans-serif;
+      color: var(--text-main);
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Efeito de estrelas sutis */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.5;
+      background-image:
+        radial-gradient(2px 2px at 12% 18%, #ffffff, transparent),
+        radial-gradient(1.5px 1.5px at 28% 72%, #ffffff, transparent),
+        radial-gradient(2px 2px at 45% 25%, #ffffff, transparent),
+        radial-gradient(1px 1px at 62% 84%, #ffffff, transparent),
+        radial-gradient(2px 2px at 78% 15%, #ffffff, transparent),
+        radial-gradient(1.5px 1.5px at 88% 58%, #ffffff, transparent),
+        radial-gradient(1px 1px at 18% 48%, #ffffff, transparent),
+        radial-gradient(2px 2px at 54% 62%, #ffffff, transparent),
+        radial-gradient(1.5px 1.5px at 92% 30%, #ffffff, transparent),
+        radial-gradient(1px 1px at 36% 90%, #ffffff, transparent);
+      z-index: 0;
+    }
+
+    h1, h2, h3, .font-title {
+      font-family: 'Fredoka', sans-serif;
+    }
+
+    /* Logo no Topo (20% maior: 168px -> 202px) */
+    .top-logo {
+      position: relative;
+      z-index: 1;
+      max-width: 202px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 14px;
+      filter: drop-shadow(0 6px 15px rgba(0, 0, 0, 0.7));
+      -webkit-mask-image: radial-gradient(ellipse at center, black 48%, transparent 74%);
+      mask-image: radial-gradient(ellipse at center, black 48%, transparent 74%);
+    }
+
+    /* Container Principal */
+    .main-card {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 750px;
+      height: 76vh;
+      min-height: 480px;
+      background: rgba(13, 27, 42, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 3px solid rgba(255, 255, 255, 0.85);
+      border-radius: 20px;
+      padding: 24px 28px;
+      overflow-y: auto;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Barra de rolagem interna customizada */
+    .main-card::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .main-card::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 10px;
+    }
+
+    .main-card::-webkit-scrollbar-thumb {
+      background: #0284c7;
+      border-radius: 10px;
+    }
+
+    .main-card::-webkit-scrollbar-thumb:hover {
+      background: #38bdf8;
+    }
+
+    .option-btn {
+      transition: all 0.2s ease;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      transform: translateY(-1px);
+      border-color: #38bdf8;
+      background-color: rgba(2, 132, 199, 0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo no Topo -->
+  <img src="judalogo.png" alt="Logo Judá" class="top-logo" />
+
+  <!-- Container Principal -->
+  <main class="main-card flex flex-col justify-between">
+    <!-- Cabeçalho do Simulado -->
+    <header class="border-b border-slate-700/80 pb-3 mb-4 flex flex-wrap items-center justify-between gap-2">
+      <div>
+        <h1 class="text-xl sm:text-2xl font-bold text-[#38bdf8] tracking-wide">
+          7th Grade English Quiz
+        </h1>
+        <p class="text-xs sm:text-sm text-[#94a3b8]">
+          Simple Past &amp; Medieval Professions
+        </p>
+      </div>
+      <div class="flex items-center gap-3">
+        <span id="progress-badge" class="px-3 py-1 text-xs sm:text-sm font-bold rounded-full bg-[#0284c7]/30 border border-[#38bdf8] text-[#f8f9fa]">
+          Question 1 / 10
+        </span>
+        <span id="score-badge" class="px-3 py-1 text-xs sm:text-sm font-bold rounded-full bg-slate-800 border border-white/40 text-[#38bdf8]">
+          Score: 0.0 / 10
+        </span>
+      </div>
+    </header>
+
+    <!-- Área Dinâmica da Questão -->
+    <section id="quiz-container" class="flex-1 flex flex-col justify-between gap-4">
+      <div id="question-area" class="space-y-4"></div>
+
+      <!-- Feedback -->
+      <div id="feedback-box" class="hidden rounded-2xl p-4 border text-sm sm:text-base leading-relaxed"></div>
+
+      <!-- Controles: Previous, Check, Next -->
+      <div class="pt-2 flex flex-wrap items-center justify-between gap-3">
+        <button id="prev-btn" class="px-5 py-2.5 rounded-full font-bold bg-slate-800 hover:bg-slate-700 text-white border-2 border-white/60 transition cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed">
+          ← Previous
+        </button>
+
+        <button id="check-btn" class="px-6 py-2.5 rounded-full font-bold bg-[#0284c7] hover:bg-[#38bdf8] text-white border-2 border-white/80 transition cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed">
+          Check
+        </button>
+
+        <button id="next-btn" class="px-6 py-2.5 rounded-full font-bold bg-[#0284c7] hover:bg-[#38bdf8] text-white border-2 border-white/80 transition cursor-pointer">
+          Next →
+        </button>
+      </div>
+    </section>
+
+    <!-- Tela Final -->
+    <section id="result-screen" class="hidden flex-1 flex flex-col items-center justify-center text-center gap-5 py-6">
+      <h2 class="text-3xl font-bold text-[#38bdf8]">Quiz Completed!</h2>
+      <div class="bg-slate-900/80 border-2 border-[#38bdf8] rounded-2xl px-8 py-5">
+        <p class="text-xs uppercase tracking-wider text-[#94a3b8] mb-1">Final Grade</p>
+        <p id="final-score-text" class="text-3xl sm:text-4xl font-bold text-[#f8f9fa]"></p>
+      </div>
+      <p id="final-message" class="text-sm sm:text-base text-[#94a3b8] max-w-md"></p>
+      <button id="restart-btn" class="px-8 py-3 rounded-full font-bold bg-[#0284c7] hover:bg-[#38bdf8] text-white border-2 border-white transition cursor-pointer">
+        Try Again
+      </button>
+    </section>
+  </main>
+
+  <script>
+    const medievalText = `
+      <div class="bg-slate-900/70 border border-[#38bdf8]/40 rounded-2xl p-4 text-sm sm:text-base leading-relaxed text-[#f8f9fa] mb-3">
+        <p class="text-xs uppercase tracking-wider text-[#38bdf8] font-bold mb-1">Read the text below and answer accordingly:</p>
+        <p>
+          During the Middle Ages, people worked in many different professions to survive and support their villages.
+          Blacksmiths forged strong iron tools, horseshoes, and weapons in hot workshops. Bakers woke up before sunrise
+          to prepare fresh bread for the community, while carpenters built wooden houses, carts, and furniture.
+          Some men became merchants and traveled long distances to trade spices, silk, and salt. Most peasants did not
+          choose their jobs, because they usually followed their parents' footsteps on the farms.
+        </p>
+      </div>
+    `;
+
+    const questions = [
+      {
+        context: medievalText,
+        question: "1. The best title for this text would be:",
+        options: [
+          "a. The kings and queens of the Middle Ages.",
+          "b. Jobs and professions in medieval times.",
+          "c. How to bake bread in ancient villages.",
+          "d. The dangers of traveling as a merchant.",
+          "e. Modern factories and iron tools."
+        ],
+        correct: 1,
+        feedback: `A resposta correta é a letra <strong>b</strong>. O texto descreve diversas ocupações da Idade Média, como <strong>blacksmiths</strong> (ferreiros), <strong>bakers</strong> (padeiros), <strong>carpenters</strong> (carpinteiros), <strong>merchants</strong> (comerciantes) e <strong>peasants</strong> (camponeses).<br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução da opção correta: "Empregos e profissões nos tempos medievais."</span>`
+      },
+      {
+        context: medievalText,
+        question: "2. According to the text, most peasants:",
+        options: [
+          "a. traveled to distant countries to sell silk.",
+          "b. woke up before sunrise to forge iron weapons.",
+          "c. built wooden houses for the entire village.",
+          "d. did not choose their jobs and worked like their parents.",
+          "e. had many opportunities to become rich merchants."
+        ],
+        correct: 3,
+        feedback: `A resposta correta é a letra <strong>d</strong>. A última frase do texto afirma: <strong>"Most peasants did not choose their jobs, because they usually followed their parents' footsteps on the farms."</strong><br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução: "A maioria dos camponeses não escolhia seus empregos, pois geralmente seguia os passos dos pais nas fazendas."</span>`
+      },
+      {
+        question: "3. Mark the only option which shows a negative sentence in the simple past tense.",
+        options: [
+          "a. They traveled to London last summer.",
+          "b. Did she buy a new notebook yesterday?",
+          "c. We didn't watch the movie on Friday.",
+          "d. He plays soccer with his friends every day.",
+          "e. I am studying for the English test now."
+        ],
+        correct: 2,
+        feedback: `A resposta correta é a letra <strong>c</strong>. Para formar frases negativas no <strong>Simple Past</strong>, usamos o auxiliar <strong>didn't</strong> (did not) seguido do verbo principal na forma base (<strong>watch</strong>).<br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução: "Nós não assistimos ao filme na sexta-feira."</span>`
+      },
+      {
+        question: '4. Choose the only alternative in which it\'s possible to see the correct short answer for "Did you finish your history project?".',
+        options: [
+          "a. Yes, I didn't.",
+          "b. No, I finish.",
+          "c. Yes, I did.",
+          "d. No, I did.",
+          "e. Yes, I finished."
+        ],
+        correct: 2,
+        feedback: `A resposta correta é a letra <strong>c</strong>. Em respostas curtas (<strong>short answers</strong>) no <strong>Simple Past</strong>, repetimos o sujeito e o auxiliar <strong>did</strong> (afirmativa) ou <strong>didn't</strong> (negativa), sem repetir o verbo principal.<br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução: "Você terminou seu projeto de história?" — "Sim, eu terminei."</span>`
+      },
+      {
+        context: `
+          <div class="bg-slate-900/70 border border-slate-700 rounded-2xl p-4 text-sm sm:text-base text-[#f8f9fa] mb-2">
+            <p><strong>Ana:</strong> Where did you <u>go</u> last weekend?</p>
+            <p><strong>Lucas:</strong> I <u>visited</u> my grandparents and <u>ate</u> delicious cake.</p>
+          </div>
+        `,
+        question: "5. The underlined verbs used in this dialogue are, respectively:",
+        options: [
+          "a. irregular, regular, irregular.",
+          "b. regular, regular, irregular.",
+          "c. irregular, irregular, regular.",
+          "d. regular, irregular, regular.",
+          "e. irregular, regular, regular."
+        ],
+        correct: 0,
+        feedback: `A resposta correta é a letra <strong>a</strong>. O verbo <strong>go</strong> (passado: <strong>went</strong>) é <strong>irregular</strong>; <strong>visited</strong> termina em <strong>-ed</strong>, sendo <strong>regular</strong>; e <strong>ate</strong> (passado de <strong>eat</strong>) é <strong>irregular</strong>.<br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução: "Onde você foi no fim de semana passado?" — "Eu visitei meus avós e comi um bolo delicioso."</span>`
+      },
+      {
+        context: `
+          <div class="bg-slate-900/70 border border-slate-700 rounded-2xl p-4 text-sm sm:text-base text-[#f8f9fa] mb-2">
+            <p><strong>Mom:</strong> Why are your clothes so muddy?</p>
+            <p><strong>Tom:</strong> I fell in a puddle while I was running after the dog!</p>
+          </div>
+        `,
+        question: "6. Mom is surprised at Tom because he:",
+        options: [
+          "a. forgot to walk the dog in the morning.",
+          "b. got his clothes dirty with mud.",
+          "c. washed his clothes before dinner.",
+          "d. bought a new dog at the park.",
+          "e. didn't like running outside."
+        ],
+        correct: 1,
+        feedback: `A resposta correta é a letra <strong>b</strong>. A mãe pergunta por que as roupas estão tão sujas de lama (<strong>muddy</strong>), e Tom explica que caiu em uma poça (<strong>fell in a puddle</strong>).<br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução: "A mãe está surpresa com o Tom porque ele sujou as roupas de lama."</span>`
+      },
+      {
+        question: '7. The correct answer for the question "Where did you find these old coins?" is:',
+        options: [
+          "a. I finded them in the garden.",
+          "b. Yes, I found old coins.",
+          "c. I found them inside an old box.",
+          "d. I am finding them right now.",
+          "e. I don't find coins yesterday."
+        ],
+        correct: 2,
+        feedback: `A resposta correta é a letra <strong>c</strong>. A pergunta usa <strong>Where did</strong> (Onde...), exigindo um lugar na resposta e o passado irregular de <strong>find</strong>, que é <strong>found</strong> (não existe "finded").<br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução: "Onde você encontrou essas moedas antigas?" — "Eu as encontrei dentro de uma caixa velha."</span>`
+      },
+      {
+        question: '8. "I met Sarah at the library." The correct question for this answer is:',
+        options: [
+          "a. Who did you meet Sarah?",
+          "b. When did you meet Sarah?",
+          "c. Did you meet Sarah?",
+          "d. Where did you meet Sarah?",
+          "e. What did you meet Sarah?"
+        ],
+        correct: 3,
+        feedback: `A resposta correta é a letra <strong>d</strong>. Como a informação destacada na resposta é um lugar (<strong>at the library</strong> — na biblioteca), devemos usar o pronome interrogativo <strong>Where</strong> (Onde).<br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução: "Onde você encontrou a Sarah?" — "Eu encontrei a Sarah na biblioteca."</span>`
+      },
+      {
+        context: `
+          <div class="bg-slate-900/70 border border-[#38bdf8]/40 rounded-2xl p-3 flex justify-center mb-2">
+            <img src="tirinha7ano.jpg" alt="Garfield comic strip" class="rounded-xl max-h-56 w-auto object-contain" />
+          </div>
+        `,
+        question: "9. What happened in the comic strip that makes the scene funny?",
+        options: [
+          "a. Odie read the entire book very fast and returned it.",
+          "b. Garfield forgot where he put the book.",
+          "c. Odie chewed and slobbered all over the book, so Garfield couldn't take it back.",
+          "d. Garfield decided to buy a new book for himself.",
+          "e. Odie gave the book to another dog in the neighborhood."
+        ],
+        correct: 2,
+        feedback: `A resposta correta é a letra <strong>c</strong>. No início, Garfield pensa <strong>"I lent Odie a book"</strong> (Eu emprestei um livro ao Odie). Depois de ver o Odie mastigando e babando no livro todo, Garfield muda de ideia e pensa <strong>"I gave Odie a book"</strong> (Eu dei um livro ao Odie), pois não quer mais o livro de volta.<br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução da opção correta: "Odie mastigou e babou no livro todo, então Garfield não pôde pegá-lo de volta."</span>`
+      },
+      {
+        question: "10. Mark the only option which shows a correctly written sentence in the interrogative form of the simple past.",
+        options: [
+          "a. Did you worked at the office yesterday?",
+          "b. Where you went last night?",
+          "c. Did he travel to Recife last month?",
+          "d. When called she her mother?",
+          "e. You did your homework?"
+        ],
+        correct: 2,
+        feedback: `A resposta correta é a letra <strong>c</strong>. Na forma interrogativa do <strong>Simple Past</strong>, usamos <strong>Did + sujeito + verbo na forma base</strong> (sem <strong>-ed</strong>), como em <strong>Did he travel...</strong>.<br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução: "Ele viajou para Recife no mês passado?"</span>`
+      }
+    ];
+
+    let currentIndex = 0;
+    let userSelections = Array(questions.length).fill(null);
+    let checkedQuestions = Array(questions.length).fill(false);
+
+    const questionArea = document.getElementById("question-area");
+    const feedbackBox = document.getElementById("feedback-box");
+    const prevBtn = document.getElementById("prev-btn");
+    const checkBtn = document.getElementById("check-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const progressBadge = document.getElementById("progress-badge");
+    const scoreBadge = document.getElementById("score-badge");
+    const quizContainer = document.getElementById("quiz-container");
+    const resultScreen = document.getElementById("result-screen");
+    const finalScoreText = document.getElementById("final-score-text");
+    const finalMessage = document.getElementById("final-message");
+    const restartBtn = document.getElementById("restart-btn");
+
+    function calculateScore() {
+      let total = 0;
+      for (let i = 0; i < questions.length; i++) {
+        if (checkedQuestions[i] && userSelections[i] === questions[i].correct) {
+          total += 1;
+        }
+      }
+      return total;
+    }
+
+    function updateScoreBadge() {
+      const score = calculateScore();
+      scoreBadge.textContent = `Score: ${score.toFixed(1)} / 10`;
+    }
+
+    function renderQuestion() {
+      const q = questions[currentIndex];
+      const selectedIdx = userSelections[currentIndex];
+      const isChecked = checkedQuestions[currentIndex];
+
+      progressBadge.textContent = `Question ${currentIndex + 1} / ${questions.length}`;
+      prevBtn.disabled = currentIndex === 0;
+      checkBtn.disabled = isChecked || selectedIdx === null;
+      nextBtn.textContent = currentIndex === questions.length - 1 ? "Finish Quiz →" : "Next →";
+
+      let html = "";
+      if (q.context) {
+        html += q.context;
+      }
+
+      html += `<h2 class="text-base sm:text-lg font-bold text-[#f8f9fa]">${q.question}</h2>`;
+      html += `<div class="space-y-2.5">`;
+
+      q.options.forEach((opt, idx) => {
+        let btnClasses = "option-btn w-full text-left px-4 py-3 rounded-full border-2 text-sm sm:text-base text-[#f8f9fa] ";
+
+        if (isChecked) {
+          if (idx === q.correct) {
+            btnClasses += "border-emerald-400 bg-emerald-500/20 font-bold ";
+          } else if (idx === selectedIdx && idx !== q.correct) {
+            btnClasses += "border-rose-400 bg-rose-500/20 ";
+          } else {
+            btnClasses += "border-white/20 bg-slate-800/50 opacity-60 ";
+          }
+        } else {
+          if (idx === selectedIdx) {
+            btnClasses += "border-[#38bdf8] bg-[#0284c7]/30 font-semibold cursor-pointer ";
+          } else {
+            btnClasses += "border-white/40 bg-slate-800/80 cursor-pointer ";
+          }
+        }
+
+        html += `
+          <button
+            onclick="selectOption(${idx})"
+            ${isChecked ? "disabled" : ""}
+            class="${btnClasses}"
+          >
+            ${opt}
+          </button>
+        `;
+      });
+
+      html += `</div>`;
+      questionArea.innerHTML = html;
+
+      if (isChecked) {
+        const isCorrect = selectedIdx === q.correct;
+        feedbackBox.className = isCorrect
+          ? "rounded-2xl p-4 border border-emerald-400/60 bg-emerald-950/50 text-sm sm:text-base leading-relaxed text-[#f8f9fa]"
+          : "rounded-2xl p-4 border border-rose-400/60 bg-rose-950/50 text-sm sm:text-base leading-relaxed text-[#f8f9fa]";
+        feedbackBox.innerHTML = q.feedback;
+        feedbackBox.classList.remove("hidden");
+      } else {
+        feedbackBox.classList.add("hidden");
+      }
+
+      updateScoreBadge();
+    }
+
+    window.selectOption = function (idx) {
+      if (checkedQuestions[currentIndex]) return;
+      userSelections[currentIndex] = idx;
+      renderQuestion();
+    };
+
+    checkBtn.addEventListener("click", () => {
+      if (userSelections[currentIndex] === null || checkedQuestions[currentIndex]) return;
+      checkedQuestions[currentIndex] = true;
+      renderQuestion();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderQuestion();
+      }
+    });
+
+    nextBtn.addEventListener("click", () => {
+      if (currentIndex < questions.length - 1) {
+        currentIndex++;
+        renderQuestion();
+      } else {
+        showResults();
+      }
+    });
+
+    function showResults() {
+      quizContainer.classList.add("hidden");
+      resultScreen.classList.remove("hidden");
+      const finalGrade = calculateScore();
+      finalScoreText.textContent = `${finalGrade.toFixed(1)} / 10.0`;
+
+      if (finalGrade >= 8) {
+        finalMessage.textContent = "Excelente desempenho! Você domina muito bem o Simple Past e a interpretação de textos.";
+      } else if (finalGrade >= 6) {
+        finalMessage.textContent = "Bom trabalho! Continue revisando os verbos irregulares e as estruturas interrogativas.";
+      } else {
+        finalMessage.textContent = "Bom esforço! Vale a pena revisar o uso de 'did', 'didn't' e os verbos no passado e tentar novamente.";
+      }
+    }
+
+    restartBtn.addEventListener("click", () => {
+      currentIndex = 0;
+      userSelections = Array(questions.length).fill(null);
+      checkedQuestions = Array(questions.length).fill(false);
+      resultScreen.classList.add("hidden");
+      quizContainer.classList.remove("hidden");
+      renderQuestion();
+    });
+
+    renderQuestion();
+  </script>
+</body>
+</html>
