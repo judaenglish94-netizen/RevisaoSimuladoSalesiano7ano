@@ -129,7 +129,7 @@
   <!-- Container Principal -->
   <main class="main-card flex flex-col justify-between">
     <!-- Cabeçalho do Simulado -->
-    <header class="border-b border-slate-700/80 pb-3 mb-4 flex flex-wrap items-center justify-between gap-2">
+    <header class="border-b border-slate-700/80 pb-3 mb-3 flex flex-wrap items-center justify-between gap-2">
       <div>
         <h1 class="text-xl sm:text-2xl font-bold text-[#38bdf8] tracking-wide">
           7th Grade English Quiz
@@ -147,6 +147,9 @@
         </span>
       </div>
     </header>
+
+    <!-- Menu de Navegação das Questões -->
+    <nav id="question-nav" class="flex flex-wrap items-center justify-center gap-1.5 mb-4 pb-3 border-b border-slate-700/60" aria-label="Question navigation"></nav>
 
     <!-- Área Dinâmica da Questão -->
     <section id="quiz-container" class="flex-1 flex flex-col justify-between gap-4">
@@ -220,35 +223,35 @@
           "a. traveled to distant countries to sell silk.",
           "b. woke up before sunrise to forge iron weapons.",
           "c. built wooden houses for the entire village.",
-          "d. did not choose their jobs and worked like their parents.",
-          "e. had many opportunities to become rich merchants."
+          "d. had many opportunities to become rich merchants.",
+          "e. did not choose their jobs and worked like their parents."
         ],
-        correct: 3,
-        feedback: `A resposta correta é a letra <strong>d</strong>. A última frase do texto afirma: <strong>"Most peasants did not choose their jobs, because they usually followed their parents' footsteps on the farms."</strong><br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução: "A maioria dos camponeses não escolhia seus empregos, pois geralmente seguia os passos dos pais nas fazendas."</span>`
+        correct: 4,
+        feedback: `A resposta correta é a letra <strong>e</strong>. A última frase do texto afirma: <strong>"Most peasants did not choose their jobs, because they usually followed their parents' footsteps on the farms."</strong><br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução: "A maioria dos camponeses não escolhia seus empregos, pois geralmente seguia os passos dos pais nas fazendas."</span>`
       },
       {
         question: "3. Mark the only option which shows a negative sentence in the simple past tense.",
         options: [
-          "a. They traveled to London last summer.",
+          "a. We didn't watch the movie on Friday.",
           "b. Did she buy a new notebook yesterday?",
-          "c. We didn't watch the movie on Friday.",
+          "c. They traveled to London last summer.",
           "d. He plays soccer with his friends every day.",
           "e. I am studying for the English test now."
         ],
-        correct: 2,
-        feedback: `A resposta correta é a letra <strong>c</strong>. Para formar frases negativas no <strong>Simple Past</strong>, usamos o auxiliar <strong>didn't</strong> (did not) seguido do verbo principal na forma base (<strong>watch</strong>).<br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução: "Nós não assistimos ao filme na sexta-feira."</span>`
+        correct: 0,
+        feedback: `A resposta correta é a letra <strong>a</strong>. Para formar frases negativas no <strong>Simple Past</strong>, usamos o auxiliar <strong>didn't</strong> (did not) seguido do verbo principal na forma base (<strong>watch</strong>).<br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução: "Nós não assistimos ao filme na sexta-feira."</span>`
       },
       {
         question: '4. Choose the only alternative in which it\'s possible to see the correct short answer for "Did you finish your history project?".',
         options: [
           "a. Yes, I didn't.",
           "b. No, I finish.",
-          "c. Yes, I did.",
-          "d. No, I did.",
-          "e. Yes, I finished."
+          "c. Yes, I finished.",
+          "d. Yes, I did.",
+          "e. No, I did."
         ],
-        correct: 2,
-        feedback: `A resposta correta é a letra <strong>c</strong>. Em respostas curtas (<strong>short answers</strong>) no <strong>Simple Past</strong>, repetimos o sujeito e o auxiliar <strong>did</strong> (afirmativa) ou <strong>didn't</strong> (negativa), sem repetir o verbo principal.<br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução: "Você terminou seu projeto de história?" — "Sim, eu terminei."</span>`
+        correct: 3,
+        feedback: `A resposta correta é a letra <strong>d</strong>. Em respostas curtas (<strong>short answers</strong>) no <strong>Simple Past</strong>, repetimos o sujeito e o auxiliar <strong>did</strong> (afirmativa) ou <strong>didn't</strong> (negativa), sem repetir o verbo principal.<br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução: "Você terminou seu projeto de história?" — "Sim, eu terminei."</span>`
       },
       {
         context: `
@@ -259,14 +262,14 @@
         `,
         question: "5. The underlined verbs used in this dialogue are, respectively:",
         options: [
-          "a. irregular, regular, irregular.",
-          "b. regular, regular, irregular.",
+          "a. regular, regular, irregular.",
+          "b. irregular, regular, irregular.",
           "c. irregular, irregular, regular.",
           "d. regular, irregular, regular.",
           "e. irregular, regular, regular."
         ],
-        correct: 0,
-        feedback: `A resposta correta é a letra <strong>a</strong>. O verbo <strong>go</strong> (passado: <strong>went</strong>) é <strong>irregular</strong>; <strong>visited</strong> termina em <strong>-ed</strong>, sendo <strong>regular</strong>; e <strong>ate</strong> (passado de <strong>eat</strong>) é <strong>irregular</strong>.<br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução: "Onde você foi no fim de semana passado?" — "Eu visitei meus avós e comi um bolo delicioso."</span>`
+        correct: 1,
+        feedback: `A resposta correta é a letra <strong>b</strong>. O verbo <strong>go</strong> (passado: <strong>went</strong>) é <strong>irregular</strong>; <strong>visited</strong> termina em <strong>-ed</strong>, sendo <strong>regular</strong>; e <strong>ate</strong> (passado de <strong>eat</strong>) é <strong>irregular</strong>.<br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução: "Onde você foi no fim de semana passado?" — "Eu visitei meus avós e comi um bolo delicioso."</span>`
       },
       {
         context: `
@@ -278,66 +281,66 @@
         question: "6. Mom is surprised at Tom because he:",
         options: [
           "a. forgot to walk the dog in the morning.",
-          "b. got his clothes dirty with mud.",
-          "c. washed his clothes before dinner.",
+          "b. washed his clothes before dinner.",
+          "c. got his clothes dirty with mud.",
           "d. bought a new dog at the park.",
           "e. didn't like running outside."
         ],
-        correct: 1,
-        feedback: `A resposta correta é a letra <strong>b</strong>. A mãe pergunta por que as roupas estão tão sujas de lama (<strong>muddy</strong>), e Tom explica que caiu em uma poça (<strong>fell in a puddle</strong>).<br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução: "A mãe está surpresa com o Tom porque ele sujou as roupas de lama."</span>`
+        correct: 2,
+        feedback: `A resposta correta é a letra <strong>c</strong>. A mãe pergunta por que as roupas estão tão sujas de lama (<strong>muddy</strong>), e Tom explica que caiu em uma poça (<strong>fell in a puddle</strong>).<br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução: "A mãe está surpresa com o Tom porque ele sujou as roupas de lama."</span>`
       },
       {
         question: '7. The correct answer for the question "Where did you find these old coins?" is:',
         options: [
           "a. I finded them in the garden.",
           "b. Yes, I found old coins.",
-          "c. I found them inside an old box.",
-          "d. I am finding them right now.",
-          "e. I don't find coins yesterday."
+          "c. I am finding them right now.",
+          "d. I don't find coins yesterday.",
+          "e. I found them inside an old box."
         ],
-        correct: 2,
-        feedback: `A resposta correta é a letra <strong>c</strong>. A pergunta usa <strong>Where did</strong> (Onde...), exigindo um lugar na resposta e o passado irregular de <strong>find</strong>, que é <strong>found</strong> (não existe "finded").<br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução: "Onde você encontrou essas moedas antigas?" — "Eu as encontrei dentro de uma caixa velha."</span>`
+        correct: 4,
+        feedback: `A resposta correta é a letra <strong>e</strong>. A pergunta usa <strong>Where did</strong> (Onde...), exigindo um lugar na resposta e o passado irregular de <strong>find</strong>, que é <strong>found</strong> (não existe "finded").<br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução: "Onde você encontrou essas moedas antigas?" — "Eu as encontrei dentro de uma caixa velha."</span>`
       },
       {
         question: '8. "I met Sarah at the library." The correct question for this answer is:',
         options: [
-          "a. Who did you meet Sarah?",
+          "a. Where did you meet Sarah?",
           "b. When did you meet Sarah?",
           "c. Did you meet Sarah?",
-          "d. Where did you meet Sarah?",
+          "d. Who did you meet Sarah?",
           "e. What did you meet Sarah?"
         ],
-        correct: 3,
-        feedback: `A resposta correta é a letra <strong>d</strong>. Como a informação destacada na resposta é um lugar (<strong>at the library</strong> — na biblioteca), devemos usar o pronome interrogativo <strong>Where</strong> (Onde).<br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução: "Onde você encontrou a Sarah?" — "Eu encontrei a Sarah na biblioteca."</span>`
+        correct: 0,
+        feedback: `A resposta correta é a letra <strong>a</strong>. Como a informação destacada na resposta é um lugar (<strong>at the library</strong> — na biblioteca), devemos usar o pronome interrogativo <strong>Where</strong> (Onde).<br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução: "Onde você encontrou a Sarah?" — "Eu encontrei a Sarah na biblioteca."</span>`
       },
       {
         context: `
-          <div class="bg-slate-900/70 border border-[#38bdf8]/40 rounded-2xl p-3 flex justify-center mb-2">
-            <img src="tirinha7ano.jpg" alt="Garfield comic strip" class="rounded-xl max-h-56 w-auto object-contain" />
+          <div class="bg-slate-900/70 border-2 border-[#38bdf8]/50 rounded-2xl p-3 flex items-center justify-center overflow-hidden mb-2">
+            <img src="tirinha7ano.jpg" alt="Garfield comic strip" class="rounded-xl w-full max-w-full max-h-52 object-contain" />
           </div>
         `,
         question: "9. What happened in the comic strip that makes the scene funny?",
         options: [
           "a. Odie read the entire book very fast and returned it.",
           "b. Garfield forgot where he put the book.",
-          "c. Odie chewed and slobbered all over the book, so Garfield couldn't take it back.",
-          "d. Garfield decided to buy a new book for himself.",
+          "c. Garfield decided to buy a new book for himself.",
+          "d. Odie chewed and slobbered all over the book, so Garfield couldn't take it back.",
           "e. Odie gave the book to another dog in the neighborhood."
         ],
-        correct: 2,
-        feedback: `A resposta correta é a letra <strong>c</strong>. No início, Garfield pensa <strong>"I lent Odie a book"</strong> (Eu emprestei um livro ao Odie). Depois de ver o Odie mastigando e babando no livro todo, Garfield muda de ideia e pensa <strong>"I gave Odie a book"</strong> (Eu dei um livro ao Odie), pois não quer mais o livro de volta.<br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução da opção correta: "Odie mastigou e babou no livro todo, então Garfield não pôde pegá-lo de volta."</span>`
+        correct: 3,
+        feedback: `A resposta correta é a letra <strong>d</strong>. No início, Garfield pensa <strong>"I lent Odie a book"</strong> (Eu emprestei um livro ao Odie). Depois de ver o Odie mastigando e babando no livro todo, Garfield muda de ideia e pensa <strong>"I gave Odie a book"</strong> (Eu dei um livro ao Odie), pois não quer mais o livro de volta.<br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução da opção correta: "Odie mastigou e babou no livro todo, então Garfield não pôde pegá-lo de volta."</span>`
       },
       {
         question: "10. Mark the only option which shows a correctly written sentence in the interrogative form of the simple past.",
         options: [
           "a. Did you worked at the office yesterday?",
-          "b. Where you went last night?",
-          "c. Did he travel to Recife last month?",
+          "b. Did he travel to Recife last month?",
+          "c. Where you went last night?",
           "d. When called she her mother?",
           "e. You did your homework?"
         ],
-        correct: 2,
-        feedback: `A resposta correta é a letra <strong>c</strong>. Na forma interrogativa do <strong>Simple Past</strong>, usamos <strong>Did + sujeito + verbo na forma base</strong> (sem <strong>-ed</strong>), como em <strong>Did he travel...</strong>.<br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução: "Ele viajou para Recife no mês passado?"</span>`
+        correct: 1,
+        feedback: `A resposta correta é a letra <strong>b</strong>. Na forma interrogativa do <strong>Simple Past</strong>, usamos <strong>Did + sujeito + verbo na forma base</strong> (sem <strong>-ed</strong>), como em <strong>Did he travel...</strong>.<br><span class="text-[#94a3b8] text-xs sm:text-sm">Tradução: "Ele viajou para Recife no mês passado?"</span>`
       }
     ];
 
@@ -345,6 +348,7 @@
     let userSelections = Array(questions.length).fill(null);
     let checkedQuestions = Array(questions.length).fill(false);
 
+    const questionNav = document.getElementById("question-nav");
     const questionArea = document.getElementById("question-area");
     const feedbackBox = document.getElementById("feedback-box");
     const prevBtn = document.getElementById("prev-btn");
@@ -373,6 +377,37 @@
       scoreBadge.textContent = `Score: ${score.toFixed(1)} / 10`;
     }
 
+    function renderNav() {
+      questionNav.innerHTML = "";
+      questions.forEach((_, idx) => {
+        const btn = document.createElement("button");
+        btn.textContent = idx + 1;
+        btn.onclick = () => {
+          currentIndex = idx;
+          renderQuestion();
+        };
+
+        let classes = "w-8 h-8 rounded-full text-xs font-bold border transition cursor-pointer flex items-center justify-center ";
+
+        if (idx === currentIndex) {
+          classes += "bg-[#38bdf8] text-slate-950 border-white scale-110 shadow ";
+        } else if (checkedQuestions[idx]) {
+          if (userSelections[idx] === questions[idx].correct) {
+            classes += "bg-emerald-500/30 text-emerald-200 border-emerald-400 ";
+          } else {
+            classes += "bg-rose-500/30 text-rose-200 border-rose-400 ";
+          }
+        } else if (userSelections[idx] !== null) {
+          classes += "bg-[#0284c7]/40 text-white border-[#38bdf8] ";
+        } else {
+          classes += "bg-slate-800/80 text-[#94a3b8] border-slate-600 hover:border-[#38bdf8] hover:text-white ";
+        }
+
+        btn.className = classes;
+        questionNav.appendChild(btn);
+      });
+    }
+
     function renderQuestion() {
       const q = questions[currentIndex];
       const selectedIdx = userSelections[currentIndex];
@@ -382,6 +417,8 @@
       prevBtn.disabled = currentIndex === 0;
       checkBtn.disabled = isChecked || selectedIdx === null;
       nextBtn.textContent = currentIndex === questions.length - 1 ? "Finish Quiz →" : "Next →";
+
+      renderNav();
 
       let html = "";
       if (q.context) {
@@ -467,6 +504,7 @@
     });
 
     function showResults() {
+      questionNav.classList.add("hidden");
       quizContainer.classList.add("hidden");
       resultScreen.classList.remove("hidden");
       const finalGrade = calculateScore();
@@ -486,6 +524,7 @@
       userSelections = Array(questions.length).fill(null);
       checkedQuestions = Array(questions.length).fill(false);
       resultScreen.classList.add("hidden");
+      questionNav.classList.remove("hidden");
       quizContainer.classList.remove("hidden");
       renderQuestion();
     });
